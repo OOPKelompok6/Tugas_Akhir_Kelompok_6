@@ -13,7 +13,13 @@ public class JDBCConnectionCreate {
     //methods for ensuring proper
     //closing of resources
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    	try {
+    		Class.forName("com.mysql.cj.jdbc.Driver");
+    	}
+    	catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
     
     //Exit The Connection
